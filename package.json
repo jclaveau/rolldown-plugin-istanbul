@@ -1,18 +1,13 @@
 {
 	"name": "rollup-plugin-istanbul",
-	"version": "5.0.0",
+	"version": "5.0.1",
 	"description": "Seamless integration between Rollup and Istanbul.",
 	"main": "./dist/rollup-plugin-istanbul.cjs",
 	"exports": {
 		"import": "./dist/rollup-plugin-istanbul.mjs",
 		"require": "./dist/rollup-plugin-istanbul.cjs"
 	},
-	"files": [
-		"src",
-		"dist",
-		"README.md",
-		"CHANGELOG.md"
-	],
+	"files": ["src", "dist", "README.md", "CHANGELOG.md"],
 	"keywords": [
 		"rollup-plugin",
 		"istanbul",
@@ -33,19 +28,17 @@
 		"build": "rollup -c",
 		"test": "mocha",
 		"prepare": "npm run build",
-		"prepublishOnly": "npm run lint && npm test",
-		"lint": "eslint src/index.js test/*.js"
+		"prepublishOnly": "npm run check && npm test",
+		"check": "biome check"
 	},
 	"dependencies": {
-		"@rollup/pluginutils": "^5.0.5",
-		"istanbul-lib-instrument": "^6.0.1"
+		"@rollup/pluginutils": "^5.1.2",
+		"istanbul-lib-instrument": "^6.0.3"
 	},
 	"devDependencies": {
-		"eslint": "^8.52.0",
-		"eslint-config-prettier": "^9.0.0",
-		"mocha": "^10.2.0",
-		"prettier": "3.0.3",
-		"rollup": "^4.1.4"
+		"@biomejs/biome": "1.9.3",
+		"mocha": "^10.7.3",
+		"rollup": "^4.24.0"
 	},
 	"peerDependencies": {
 		"rollup": "^1.20.0||^2.0.0||^3.0.0||^4.0.0"

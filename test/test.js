@@ -1,4 +1,4 @@
-const assert = require("assert")
+const assert = require("node:assert")
 const rollup = require("rollup")
 const istanbulPlugin = require("..")
 
@@ -7,8 +7,8 @@ process.chdir(__dirname)
 describe("rollup-plugin-istanbul", function () {
 	this.timeout(15000)
 
-	it("transforms code through istanbul instrumenter", function () {
-		return rollup
+	it("transforms code through istanbul instrumenter", () =>
+		rollup
 			.rollup({
 				input: "fixtures/main.js",
 				plugins: [istanbulPlugin()],
@@ -25,11 +25,10 @@ describe("rollup-plugin-istanbul", function () {
 			.then((generated) => {
 				const code = generated.output[0].code
 				assert.ok(code.indexOf("coverage[path]") !== -1, code)
-			})
-	})
+			}))
 
-	it("adds the file name properly", function () {
-		return rollup
+	it("adds the file name properly", () =>
+		rollup
 			.rollup({
 				input: "fixtures/main.js",
 				plugins: [istanbulPlugin()],
@@ -46,11 +45,10 @@ describe("rollup-plugin-istanbul", function () {
 			.then((generated) => {
 				const code = generated.output[0].code
 				assert.ok(code.indexOf("fixtures/main.js") !== -1, code)
-			})
-	})
+			}))
 
-	it("transforms code through istanbul instrumenter with source map", function () {
-		return rollup
+	it("transforms code through istanbul instrumenter with source map", () =>
+		rollup
 			.rollup({
 				input: "fixtures/main.js",
 				plugins: [
@@ -86,6 +84,5 @@ describe("rollup-plugin-istanbul", function () {
 						"}\n",
 				])
 				assert.notEqual(map.mappings, "")
-			})
-	})
+			}))
 })
