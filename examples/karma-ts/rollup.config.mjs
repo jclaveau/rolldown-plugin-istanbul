@@ -1,3 +1,4 @@
+import json from "@rollup/plugin-json"
 import typescript from "@rollup/plugin-typescript"
 
 export default {
@@ -17,5 +18,5 @@ export default {
 			file: "./dist/example.cjs.js",
 		},
 	],
-	plugins: [typescript()],
+	plugins: [typescript(), json()],
 }

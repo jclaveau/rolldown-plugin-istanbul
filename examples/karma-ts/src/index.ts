@@ -1,5 +1,7 @@
 import { sum } from "./sum"
 
+import data from "./data.json" assert { type: "json" }
+
 interface Example {
 	sum(a: number, b: number): number
 	subtract(a: number, b: number): number
@@ -24,4 +26,8 @@ export const example: Example = {
 	multiply(a, b) {
 		return multiply(a, b)
 	},
+}
+
+export const logData = () => {
+	console.log(data)
 }

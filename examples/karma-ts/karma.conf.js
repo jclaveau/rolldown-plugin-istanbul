@@ -1,5 +1,6 @@
 const istanbul = require("rollup-plugin-istanbul")
 const typescript = require("@rollup/plugin-typescript")
+const json = require("@rollup/plugin-json")
 
 module.exports = (config) => {
 	config.set({
@@ -25,11 +26,18 @@ module.exports = (config) => {
 		rollupPreprocessor: {
 			plugins: [
 				typescript(),
+				json(),
 				istanbul({
 					exclude: ["spec/**/*.spec.ts"],
 					sourceMap: true,
 					instrumenterConfig: {
 						produceSourceMap: true,
+						parserPlugins: [
+							["importAttributes", { deprecatedAssertSyntax: true }],
+						],
+						generatorOpts: {
+							importAttributesKeyword: "assert",
+						},
 					},
 				}),
 			],
