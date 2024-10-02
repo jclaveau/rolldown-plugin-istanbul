@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## X.X.X (YYYY-MM-DD)
+
+### Others
+
+- Replace Eslint and Prettier with Biome
+- Update examples
+- Upgrade dependencies
+
 ## 5.0.0 (2023-10-21)
 
 ### Features
