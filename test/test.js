@@ -1,18 +1,17 @@
 const assert = require("node:assert")
-const rollup = require("rollup")
+const { rolldown } = require("rolldown")
 const istanbulPlugin = require("..")
 
 process.chdir(__dirname)
 
-describe("rollup-plugin-istanbul", function () {
+describe("rolldown-plugin-istanbul", function () {
 	this.timeout(15000)
 
 	it("transforms code through istanbul instrumenter", () =>
-		rollup
-			.rollup({
-				input: "fixtures/main.js",
-				plugins: [istanbulPlugin()],
-			})
+		rolldown({
+			input: "fixtures/main.js",
+			plugins: [istanbulPlugin()],
+		})
 			.then((bundle) => {
 				return bundle.generate({
 					format: "iife",
@@ -28,11 +27,10 @@ describe("rollup-plugin-istanbul", function () {
 			}))
 
 	it("adds the file name properly", () =>
-		rollup
-			.rollup({
-				input: "fixtures/main.js",
-				plugins: [istanbulPlugin()],
-			})
+		rolldown({
+			input: "fixtures/main.js",
+			plugins: [istanbulPlugin()],
+		})
 			.then((bundle) => {
 				return bundle.generate({
 					format: "iife",
@@ -48,23 +46,25 @@ describe("rollup-plugin-istanbul", function () {
 			}))
 
 	it("transforms code through istanbul instrumenter with source map", () =>
-		rollup
-			.rollup({
-				input: "fixtures/main.js",
-				plugins: [
-					istanbulPlugin({
-						instrumenterConfig: {
-							produceSourceMap: false,
-							compact: false,
-						},
-					}),
-				],
-			})
+		rolldown({
+			input: "fixtures/main.js",
+			plugins: [
+				istanbulPlugin({
+					instrumenterConfig: {
+						produceSourceMap: false,
+						compact: false,
+					},
+				}),
+			],
+		})
 			.then((bundle) => {
 				return bundle.generate({
 					sourcemap: true,
 					format: "iife",
 					name: "test",
+					// rolldown defaults the output dir to "dist", which makes
+					// sourcemap sources relative to it ("../fixtures/main.js")
+					dir: ".",
 					globals: {
 						whatever: "whatever",
 					},

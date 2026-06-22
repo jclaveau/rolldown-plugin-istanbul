@@ -4,12 +4,12 @@ export default {
 	output: [
 		{
 			format: "cjs",
-			file: "dist/rollup-plugin-istanbul.cjs",
+			file: "dist/rolldown-plugin-istanbul.cjs",
 			exports: "default",
 		},
 		{
 			format: "es",
-			file: "dist/rollup-plugin-istanbul.mjs",
+			file: "dist/rolldown-plugin-istanbul.mjs",
 			exports: "default",
 		},
 	],

@@ -18,16 +18,13 @@ on:
           - 18.x
           - 20.x
           - 22.x
-      rollup:
-        description: "Rollup version"
+      rolldown:
+        description: "Rolldown version"
         required: true
-        default: ^4
+        default: ^1
         type: choice
         options:
           - ^1
-          - ^2
-          - ^3
-          - ^4
 
 jobs:
   build:
@@ -36,14 +33,7 @@ jobs:
     strategy:
       matrix:
         node-version: [18.x, 20.x, 22.x]
-        rollup-version: [^1, ^2, ^3]
-        include:
-          - node-version: 18.x
-            rollup-version: ^4
-          - node-version: 20.x
-            rollup-version: ^4
-          - node-version: 22.x
-            rollup-version: ^4
+        rolldown-version: [^1]
 
     steps:
       - name: Checkout
@@ -64,7 +54,7 @@ jobs:
         run: pnpm install --frozen-lockfile --strict-peer-dependencies
       - name: Check code
         run: pnpm run check
-      - name: Install rollup version {{ matrix.rollup-version }}
-        run: pnpm add -D rollup@${{ matrix.rollup-version }}
+      - name: Install rolldown version ${{ matrix.rolldown-version }}
+        run: pnpm add -D rolldown@${{ matrix.rolldown-version }}
       - name: Test code
         run: pnpm run test

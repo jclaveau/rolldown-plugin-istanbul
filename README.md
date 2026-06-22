@@ -1,38 +1,39 @@
-# rollup-plugin-istanbul
+# rolldown-plugin-istanbul
 
-[![Build Status](https://github.com/artberri/rollup-plugin-istanbul/actions/workflows/ci.yml/badge.svg)](https://github.com/artberri/rollup-plugin-istanbul/actions/workflows/ci.yml)
-[![Maintainability](https://api.codeclimate.com/v1/badges/ea3da2334fcbff2a07c8/maintainability)](https://codeclimate.com/github/artberri/rollup-plugin-istanbul/maintainability)
-[![Last version](https://img.shields.io/npm/v/rollup-plugin-istanbul.svg)](https://www.npmjs.com/package/rollup-plugin-istanbul)
-[![Total Downloads](https://img.shields.io/npm/dt/rollup-plugin-istanbul.svg)](https://www.npmjs.com/package/rollup-plugin-istanbul)
-[![Downloads Last Month](https://img.shields.io/npm/dm/rollup-plugin-istanbul.svg)](https://www.npmjs.com/package/rollup-plugin-istanbul)
-[![License](https://img.shields.io/npm/l/rollup-plugin-istanbul.svg)](https://github.com/artberri/rollup-plugin-istanbul/blob/master/LICENSE)
+[![Build Status](https://github.com/jclaveau/rolldown-plugin-istanbul/actions/workflows/ci.yml/badge.svg)](https://github.com/jclaveau/rolldown-plugin-istanbul/actions/workflows/ci.yml)
+[![Last version](https://img.shields.io/npm/v/rolldown-plugin-istanbul.svg)](https://www.npmjs.com/package/rolldown-plugin-istanbul)
+[![Total Downloads](https://img.shields.io/npm/dt/rolldown-plugin-istanbul.svg)](https://www.npmjs.com/package/rolldown-plugin-istanbul)
+[![Downloads Last Month](https://img.shields.io/npm/dm/rolldown-plugin-istanbul.svg)](https://www.npmjs.com/package/rolldown-plugin-istanbul)
+[![License](https://img.shields.io/npm/l/rolldown-plugin-istanbul.svg)](https://github.com/jclaveau/rolldown-plugin-istanbul/blob/main/LICENSE)
 
-Seamless integration between [Rollup](https://github.com/rollup/rollup) and [Istanbul](https://github.com/istanbuljs/istanbuljs).
+Seamless integration between [Rolldown](https://github.com/rolldown/rolldown) and [Istanbul](https://github.com/istanbuljs/istanbuljs).
+
+The plugin uses the Rollup-compatible plugin API, so it also works with [Rollup](https://github.com/rollup/rollup) unchanged.
 
 ## Why?
 
-If you're using Rollup to generate a standalone bundle you will probably need also to bundle your tests before running them, and if you want the code coverage report, you will need to instrument the program files before the bundle is generated to avoid instrumenting also the code of the test files.
+If you're using Rolldown to generate a standalone bundle you will probably need also to bundle your tests before running them, and if you want the code coverage report, you will need to instrument the program files before the bundle is generated to avoid instrumenting also the code of the test files.
 
-That is the reason why rollup-plugin-istanbul exists.
+That is the reason why rolldown-plugin-istanbul exists.
 
 ## Installation
 
 ```bash
-npm install --save-dev rollup-plugin-istanbul
+npm install --save-dev rolldown-plugin-istanbul
 # or
-yarn add -D rollup-plugin-istanbul
+yarn add -D rolldown-plugin-istanbul
 # or
-pnpm add -D rollup-plugin-istanbul
+pnpm add -D rolldown-plugin-istanbul
 ```
 
 ## Usage
 
 ```js
-import { rollup } from 'rollup';
-import istanbul from 'rollup-plugin-istanbul';
+import { rolldown } from 'rolldown';
+import istanbul from 'rolldown-plugin-istanbul';
 
-rollup({
-  entry: 'main.js',
+rolldown({
+  input: 'main.js',
   plugins: [
     istanbul({
       exclude: ['test/**/*.js']
@@ -77,11 +78,11 @@ Can be a replacement for the istanbul library, for example [isparta](https://git
 
 ### Other usage options
 
-`rollup-plugin-istanbul` can be used with karma or other test runners that allow preprocessors. Here you can see how to implement it with Karma with the help of the [karma-rollup-preprocessor](https://github.com/jlmakes/karma-rollup-preprocessor) and [karma-coverage](https://github.com/karma-runner/karma-coverage):
+`rolldown-plugin-istanbul` can be used with karma or other test runners that allow preprocessors. Here you can see how to implement it with Karma with the help of the [karma-rollup-preprocessor](https://github.com/jlmakes/karma-rollup-preprocessor) and [karma-coverage](https://github.com/karma-runner/karma-coverage):
 
 ```js
 // karma.conf.js
-var istanbul = require("rollup-plugin-istanbul")
+var istanbul = require("rolldown-plugin-istanbul")
 
 module.exports = function (config) {
 	config.set({
@@ -108,7 +109,7 @@ Going further, this is how you can implement it when you are using babel because
 ```js
 // karma.conf.js
 
-const istanbul = require("rollup-plugin-istanbul")
+const istanbul = require("rolldown-plugin-istanbul")
 const babel = require("@rollup/plugin-babel").babel
 
 module.exports = function (config) {
@@ -149,7 +150,7 @@ Example of implementation provided in [examples folder](examples/karma).
 
 [http://opensource.org/licenses/MIT](http://opensource.org/licenses/MIT)
 
-Copyright (c) 2016 Alberto Varela Sanchez & [Contributors](https://github.com/artberri/rollup-plugin-istanbul/graphs/contributors)
+Copyright (c) 2016 Alberto Varela Sanchez & [Contributors](https://github.com/jclaveau/rolldown-plugin-istanbul/graphs/contributors)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
