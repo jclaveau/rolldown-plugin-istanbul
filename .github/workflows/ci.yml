@@ -15,7 +15,6 @@ on:
         default: 22.x
         type: choice
         options:
-          - 18.x
           - 20.x
           - 22.x
       rolldown:
@@ -32,7 +31,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 22.x]
+        node-version: [20.x, 22.x]
         rolldown-version: [^1]
 
     steps:

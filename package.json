@@ -25,6 +25,9 @@
 		"url": "https://www.albertovarela.net"
 	},
 	"license": "MIT",
+	"engines": {
+		"node": "^20.19.0 || >=22.12.0"
+	},
 	"scripts": {
 		"prebuild": "rm -rf dist/*",
 		"build": "rolldown -c",
